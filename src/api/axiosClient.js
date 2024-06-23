@@ -5,11 +5,12 @@ import apiConfig from "./apiConfig";
 import { response } from "express";
 
 const axiosClient = axios.create({
-  baseURL: apiConfig.baseURL,
+  baseURL: apiConfig.baseUrl,
   headers: {
     "Content-Type": "application/json",
   },
-  paramsSerializer: (params) => queryString.stringify(...params, api_key),
+  paramsSerializer: (params) =>
+    queryString.stringify({ ...params, api_Key: apiConfig.apiKey }),
 });
 
 axiosClient.interceptors.request.use(async (config) => config);

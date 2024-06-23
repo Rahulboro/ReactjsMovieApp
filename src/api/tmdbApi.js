@@ -19,6 +19,31 @@ export const TvType = {
 
 const tmbApi = {
   getMoviesList: (type, params) => {
-    const url= 'movie' +
-  }
-}
+    const url = "movie/" + movieType[type];
+    return axiosClient.get(url, params);
+  },
+  getTvList: (type, params) => {
+    const url = "tv/" + TvType[type];
+    return axiosClient.get(url, params);
+  },
+  getvideos: (cate, id) => {
+    const url = category[cate] + "/" + id + "/videos";
+    return axiosClient.get(url);
+  },
+  search: (cate, params) => {
+    const url = "search/" + category[cate];
+    return axiosClient.get(url, params);
+  },
+  detail: (cate, id, params) => {
+    const url = category[cate] + "/" + id;
+    return axiosClient.get(url, params);
+  },
+  credits: (cate, id) => {
+    const url = category[cate] + "/" + id + "/credits";
+    return axiosClient.get(url, { param: {} });
+  },
+  similar: (cate, id, params) => {
+    const url = category[cate] + "/" + id + "/similar";
+    return axiosClient.get(url, { params: {} });
+  },
+};
